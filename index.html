@@ -116,7 +116,12 @@
                       </div>
                     </div>
                     <label class="custom-control custom-checkbox float-right">
-                      <input type="checkbox" class="custom-control-input">
+                      <input
+                        id="is-custom-filter-enabled"
+                        type="checkbox"
+                        class="custom-control-input"
+                        value="1"
+                      >
                       <span class="custom-control-indicator"></span>
                       <span class="custom-control-description">
                         Set a custom filter matrix
@@ -126,7 +131,11 @@
                 </div>
               </div>
               <div class="col-lg-6 grid-item">
-                <div class="card h-100">
+                <div
+                  id="custom-filter-matrix-card"
+                  class="card h-100"
+                  style="display: none"
+                >
                   <div class="card-body">
                     <h4 class="card-title">
                       <a href="#">Custom Filter Matrix</a>
@@ -244,11 +253,7 @@
   </footer>
 
   <!-- vendor scripts -->
-  <script
-      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-      crossorigin="anonymous"
-  ></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
       integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
@@ -261,6 +266,6 @@
   ></script>
 
   <!-- custom scripts -->
-  <script src=""></script>
+  <script src="js/ui-events.js"></script>
 </body>
 </html>
