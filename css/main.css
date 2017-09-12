@@ -10,6 +10,10 @@ body {
   margin-top: 30px;
 }
 
+.dropdown {
+  margin-left: 10px;
+}
+
 #accordion, #properties {
   margin-bottom: 30px
 }
