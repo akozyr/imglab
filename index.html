@@ -66,7 +66,7 @@
         </div>
         <div
           id="collapseOne"
-          class="collapse"
+          class="collapse show"
           role="tabpanel"
           aria-labelledby="headingOne"
           data-parent="#accordion"
@@ -77,12 +77,32 @@
                 <div class="card h-100">
                   <div class="card-body">
                     <h4 class="card-title">
-                      <a href="#">Settings #1</a>
+                      <a href="#">General Settings</a>
                     </h4>
-                    <p class="card-text">
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                      Nam viverra euismod odio, gravida pellentesque urna varius vitae
-                    </p>
+                    <div class="dropdown">
+                      <button
+                        class="btn dropdown-toggle"
+                        type="button"
+                        id="filters-dropdown"
+                        data-toggle="dropdown"
+                        aria-haspopup="true"
+                        aria-expanded="false"
+                      >
+                        Filters
+                      </button>
+                      <div class="dropdown-menu" aria-labelledby="filters-dropdown">
+                        <a class="dropdown-item" href="#">Sobel</a>
+                        <a class="dropdown-item" href="#">Canny</a>
+                        <a class="dropdown-item" href="#">Williams</a>
+                      </div>
+                    </div>
+                    <label class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input">
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">
+                        Set a custom filter matrix
+                      </span>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -90,17 +110,35 @@
                 <div class="card h-100">
                   <div class="card-body">
                     <h4 class="card-title">
-                      <a href="#">Settings #2</a>
+                      <a href="#">Custom Filter Matrix</a>
                     </h4>
-                    <p class="card-text">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                      Fugit aliquam aperiam nulla perferendis dolor nobis numquam,
-                      rem expedita, aliquid optio, alias illum eaque. Non magni,
-                      voluptates quae, necessitatibus unde temporibus.
-                    </p>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Set matrix using ';'"
+                        aria-label="Set matrix using ';'"
+                      >
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">
+                          Add to the list
+                        </button>
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
+            </div>
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="List of filters..."
+                aria-label="List of filters..."
+              >
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">Run</button>
+              </span>
             </div>
           </div>
         </div>
