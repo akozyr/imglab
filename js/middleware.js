@@ -1,4 +1,17 @@
-const helper = {
+const middleware = {
+  availableFilters: [],
+  init () {
+    this.getAvailableFilters()
+  },
+  getAvailableFilters () {
+    const jsfeatFilters = jsfeatService.getFilters().map(el => {
+      return [el, 'jsfeat']
+    })
+
+    this.availableFilters = this.availableFilters.concat(
+      jsfeatFilters
+    )
+  },
   getImageDataFromImage (image, canvas) {
     let context2d = canvas.getContext('2d')
 

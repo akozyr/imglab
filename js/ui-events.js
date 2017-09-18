@@ -4,6 +4,8 @@ $(document).ready(() => {
   const outputImage = $('#output-image')[0]
   const commandLine = $('#command-line-input')[0]
 
+  middleware.init()
+
   $('#is-custom-filter-enabled').change((el) => {
     let isChecked = $(el.target).prop("checked")
 
@@ -15,11 +17,11 @@ $(document).ready(() => {
   })
 
   $('#run-button').click(() => {
-    const inputImageData = helper.getImageDataFromImage(inputImage, canvas)
+    const inputImageData = middleware.getImageDataFromImage(inputImage, canvas)
     const commandLineStr = $(commandLine).val()
 
     const outputImageData = controller.applyFilters(inputImageData, commandLineStr)
 
-    helper.insertImageDataToImage(canvas, outputImageData, outputImage)
+    middleware.insertImageDataToImage(canvas, outputImageData, outputImage)
   })
 })
