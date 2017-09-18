@@ -1,5 +1,9 @@
 $(document).ready(() => {
-  // show Custom Filter Matrix
+  const canvas = $('#canvas')[0]
+  const inputImage = $('#input-image')[0]
+  const outputImage = $('#output-image')[0]
+  const commandLine = $('#command-line-input')[0]
+
   $('#is-custom-filter-enabled').change((el) => {
     let isChecked = $(el.target).prop("checked")
 
@@ -11,10 +15,11 @@ $(document).ready(() => {
   })
 
   $('#run-button').click(() => {
-    const inputImageData = getImageDataFromImage(
-      $('#input-image')[0],
-      $('#canvas')[0]
-    )
-    console.log(inputImageData)
+    const inputImageData = helper.getImageDataFromImage(inputImage, canvas)
+    const commandLineStr = $(commandLine).val()
+
+    const outputImageData = controller.applyFilters(inputImageData, commandLineStr)
+
+    helper.insertImageDataToImage(canvas, outputImageData, outputImage)
   })
 })
