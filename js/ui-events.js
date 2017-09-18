@@ -9,4 +9,12 @@ $(document).ready(() => {
       $('#custom-filter-matrix-card').hide()
     }
   })
+
+  $('#run-button').click(() => {
+    const inputImageData = getImageDataFromImage(
+      $('#input-image')[0],
+      $('#canvas')[0]
+    )
+    console.log(inputImageData)
+  })
 })

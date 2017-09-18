@@ -16,6 +16,7 @@
   <link href="css/main.css" rel="stylesheet">
 </head>
 <body>
+  <canvas id="canvas" style="display: none"></canvas>
   <nav
       class="navbar navbar-light navbar-expand-lg fixed-top"
       style="background-color: #e3f2fd;"
@@ -165,7 +166,11 @@
                 aria-label="List of filters..."
               >
               <span class="input-group-btn">
-                <button class="btn btn-primary" type="button">Run</button>
+                <button
+                  id="run-button"
+                  class="btn btn-primary"
+                  type="button"
+                >Run</button>
               </span>
             </div>
           </div>
@@ -178,14 +183,24 @@
         <div class="col-lg-6 grid-item">
           <div class="card h-100">
             <a href="#">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+              <img
+                id="input-image"
+                class="card-img-top"
+                src="img/flower.bmp"
+                alt=""
+              >
             </a>
           </div>
         </div>
         <div class="col-lg-6 grid-item">
           <div class="card h-100">
             <a href="#">
-              <img class="card-img-top" src="http://placehold.it/700x400" alt="">
+              <img
+                id="output-image"
+                class="card-img-top"
+                src="http://placehold.it/700x400"
+                alt=""
+              >
             </a>
           </div>
         </div>
@@ -265,7 +280,12 @@
       crossorigin="anonymous"
   ></script>
 
+  <script src="js/vendors/jsfeat/build/jsfeat-min.js"></script>
+
   <!-- custom scripts -->
   <script src="js/ui-events.js"></script>
+  <script src="js/services/jsfeat.js"></script>
+  <script src="js/helper.js"></script>
+  <script src="js/controller.js"></script>
 </body>
 </html>
