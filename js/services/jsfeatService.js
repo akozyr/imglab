@@ -10,18 +10,7 @@ const jsfeatService = {
 
     return Object.keys(filters)
   },
-  _convertU8toImageData (imageData, u8Array) {
-    let dataU32 = new Uint32Array(imageData.data.buffer)
-    const alpha = (0xff << 24);
-    let i = u8Array.cols * u8Array.rows, pix = 0
-    while (--i >= 0) {
-        pix = u8Array.data[i]
-        dataU32[i] = alpha | (pix << 16) | (pix << 8) | pix
-    }
-
-    return imageData
-  },
-  _grayscale () {
+  grayscale () {
     let grayImg = new jsfeat.matrix_t(
       this.imageData.width,
       this.imageData.height,
@@ -39,13 +28,24 @@ const jsfeatService = {
 
     return this._convertU8toImageData(this.imageData, grayImg)
   },
-  _gaussianBlur () {
+  gaussianBlur () {
 
   },
-  _sobelDerivatives () {
+  sobelDerivatives () {
 
   },
-  _canny () {
+  canny () {
 
+  },
+  _convertU8toImageData (imageData, u8Array) {
+    let dataU32 = new Uint32Array(imageData.data.buffer)
+    const alpha = (0xff << 24);
+    let i = u8Array.cols * u8Array.rows, pix = 0
+    while (--i >= 0) {
+        pix = u8Array.data[i]
+        dataU32[i] = alpha | (pix << 16) | (pix << 8) | pix
+    }
+
+    return imageData
   }
 }
