@@ -30,6 +30,8 @@ const controller = {
       }
 
       const serviceTitle = service[1]
+      
+      console.log(data)
 
       this.services[serviceTitle].imageData = data
       data = this.services[serviceTitle].filters[filter]()
