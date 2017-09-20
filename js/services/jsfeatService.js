@@ -1,5 +1,6 @@
 const jsfeatService = {
   imageData: null,
+  filters: {},
   getFilters () {
     const filters = {
       grayscale: this.grayscale,
@@ -8,7 +9,9 @@ const jsfeatService = {
       canny: this.canny
     }
 
-    return Object.keys(filters)
+    this.filters = filters
+
+    return Object.keys(this.filters)
   },
   grayscale () {
     let grayImg = new jsfeat.matrix_t(

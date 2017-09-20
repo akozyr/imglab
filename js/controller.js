@@ -32,7 +32,7 @@ const controller = {
       const serviceTitle = service[1]
 
       this.services[serviceTitle].imageData = data
-      data = this.services[serviceTitle][filter]()
+      data = this.services[serviceTitle].filters[filter]()
     })
 
     return data
