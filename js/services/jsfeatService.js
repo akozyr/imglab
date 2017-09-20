@@ -29,7 +29,24 @@ const jsfeatService = {
     return this._convertU8toImageData(this.imageData, grayImg)
   },
   gaussianBlur () {
+    let bluredImg = new jsfeat.matrix_t(
+      this.imageData.width,
+      this.imageData.height,
+      jsfeat.U8_t | jsfeat.C1_t
+    )
 
+    const radius = 2
+    const sigma = 0
+    const kernelSize = (radius + 1) << 1
+
+    jsfeat.imgproc.gaussian_blur(
+      this.imageData.data,
+      bluredImg,
+      kernelSize,
+      sigma
+    )
+
+    return this._convertU8toImageData(this.imageData, bluredImg)
   },
   sobelDerivatives () {
 
