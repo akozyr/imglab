@@ -13,9 +13,7 @@ const jsfeatService = {
 
     return Object.keys(this.filters)
   },
-  grayscale () {
-    console.log(this.imageData)
-    
+  grayscale () {    
     let grayImg = new jsfeat.matrix_t(
       this.imageData.width,
       this.imageData.height,
