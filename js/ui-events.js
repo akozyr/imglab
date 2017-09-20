@@ -17,9 +17,7 @@ $(document).ready(() => {
   })
 
   $('#run-button').click(() => {
-    // const inputImageData = middleware.getImageDataFromImage(inputImage, canvas)
-    // TODO: remove default value
-    let inputImageData = null
+    const inputImageData = middleware.getImageDataFromImage(inputImage, canvas)
     const commandLineStr = $(commandLine).val()
 
     const outputImageData = controller.applyFilters(inputImageData, commandLineStr)

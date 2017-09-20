@@ -22,10 +22,17 @@ const controller = {
   },
   processData (data, filters) {
     filters.forEach(filter => {
-      let serviceTitle = middleware.availableFilters.find(el => el[0] === filter)
+      const service = middleware.availableFilters.find(el => el[0] === filter)
 
-      services[serviceTitle].imageData = data
-      data = services[serviceTitle][filter]()
+      if (!service) {
+        alert('"' + filter + '" can not be found.')
+        return false
+      }
+
+      const serviceTitle = service[1]
+
+      this.services[serviceTitle].imageData = data
+      data = this.services[serviceTitle][filter]()
     })
 
     return data
