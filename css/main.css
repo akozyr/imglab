@@ -1,0 +1,19 @@
+body {
+  padding-top: 60px;
+}
+
+.grid-item {
+  margin-bottom: 30px;
+}
+
+.main-block {
+  margin-top: 30px;
+}
+
+.dropdown {
+  margin-left: 10px;
+}
+
+#accordion, #properties {
+  margin-bottom: 30px
+}

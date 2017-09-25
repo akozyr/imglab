@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ImgLab</title>
+
+  <!-- vendor styles -->
+  <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+    integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+    crossorigin="anonymous"
+  >
+
+  <!-- custom styles -->
+  <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+  <canvas id="canvas" style="display: none"></canvas>
+  <nav
+      class="navbar navbar-light navbar-expand-lg fixed-top"
+      style="background-color: #e3f2fd;"
+  >
+    <div class="container">
+      <button
+        class="navbar-toggler navbar-toggler-right"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">ImgLab</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">About</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container main-block">
+    <div id="accordion" role="tablist">
+      <div class="card">
+        <div class="card-header" role="tab" id="headingOne">
+          <h5 class="mb-0">
+            <a
+              data-toggle="collapse"
+              href="#collapseOne"
+              aria-expanded="true"
+              aria-controls="collapseOne"
+            >
+              Settings
+            </a>
+          </h5>
+        </div>
+        <div
+          id="collapseOne"
+          class="collapse show"
+          role="tabpanel"
+          aria-labelledby="headingOne"
+          data-parent="#accordion"
+        >
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6 grid-item">
+                <div class="card h-100">
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="#">General Settings</a>
+                    </h4>
+                    <div class="row">
+                      <div class="dropdown">
+                        <button
+                          class="btn dropdown-toggle"
+                          type="button"
+                          id="images-dropdown"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          Test Images
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="images-dropdown">
+                          <a class="dropdown-item" href="#">1</a>
+                          <a class="dropdown-item" href="#">2</a>
+                          <a class="dropdown-item" href="#">3</a>
+                        </div>
+                      </div>
+                      <div class="dropdown">
+                        <button
+                          class="btn dropdown-toggle"
+                          type="button"
+                          id="filters-dropdown"
+                          data-toggle="dropdown"
+                          aria-haspopup="true"
+                          aria-expanded="false"
+                        >
+                          Filters
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="filters-dropdown">
+                          <a class="dropdown-item" href="#">Sobel</a>
+                          <a class="dropdown-item" href="#">Canny</a>
+                          <a class="dropdown-item" href="#">Williams</a>
+                        </div>
+                      </div>
+                    </div>
+                    <label class="custom-control custom-checkbox float-right">
+                      <input
+                        id="is-custom-filter-enabled"
+                        type="checkbox"
+                        class="custom-control-input"
+                        value="1"
+                      >
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">
+                        Set a custom filter matrix
+                      </span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6 grid-item">
+                <div
+                  id="custom-filter-matrix-card"
+                  class="card h-100"
+                  style="display: none"
+                >
+                  <div class="card-body">
+                    <h4 class="card-title">
+                      <a href="#">Custom Filter Matrix</a>
+                    </h4>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Set matrix using ';'"
+                        aria-label="Set matrix using ';'"
+                      >
+                      <span class="input-group-btn">
+                        <button class="btn btn-primary" type="button">
+                          Add to the list
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="input-group">
+              <input
+                id="command-line-input"
+                type="text"
+                class="form-control"
+                placeholder="List of filters..."
+                aria-label="List of filters..."
+                value="grayscale;gaussian_blur"
+              >
+              <span class="input-group-btn">
+                <button
+                  id="run-button"
+                  class="btn btn-primary"
+                  type="button"
+                >Run</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="images">
+      <div class="row">
+        <div class="col-lg-6 grid-item">
+          <div class="card h-100">
+            <a href="#">
+              <img
+                id="input-image"
+                class="card-img-top"
+                src="img/flower.bmp"
+                alt=""
+              >
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-6 grid-item">
+          <div class="card h-100">
+            <a href="#">
+              <img
+                id="output-image"
+                class="card-img-top"
+                src=""
+                alt=""
+              >
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="properties" class="card">
+      <div class="card-header">
+        Images Properties
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-lg-12 grid-item">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Shared properties</a>
+                </h4>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nam viverra euismod odio, gravida pellentesque urna varius vitae
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-6 grid-item">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Input Image Properties</a>
+                </h4>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                  Nam viverra euismod odio, gravida pellentesque urna varius vitae
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6 grid-item">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  <a href="#">Output Image Properties</a>
+                </h4>
+                <p class="card-text">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Fugit aliquam aperiam nulla perferendis dolor nobis numquam,
+                  rem expedita, aliquid optio, alias illum eaque. Non magni,
+                  voluptates quae, necessitatibus unde temporibus.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="py-4 bg-dark">
+    <div class="container">
+      <p class="m-0 text-center text-white">Copyright &copy; ImgLab 2017</p>
+    </div>
+  </footer>
+
+  <!-- vendor scripts -->
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+      crossorigin="anonymous"
+  ></script>
+  <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+      integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+      crossorigin="anonymous"
+  ></script>
+
+  <script src="js/vendors/jsfeat/build/jsfeat-min.js"></script>
+
+  <!-- custom scripts -->
+  <script src="js/ui-events.js"></script>
+  <script src="js/services/jsfeatService.js"></script>
+  <script src="js/middleware.js"></script>
+  <script src="js/controller.js"></script>
+</body>
+</html>
