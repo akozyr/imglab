@@ -4,6 +4,7 @@ const middleware = {
     this.getAvailableFilters()
   },
   getAvailableFilters () {
+    const jsfeatService = new JsfeatService()
     const jsfeatFilters = jsfeatService.getFilters().map(el => {
       return [el, 'jsfeat']
     })

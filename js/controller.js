@@ -1,12 +1,8 @@
 const controller = {
   services: {
-    'jsfeat': jsfeatService
+    'jsfeat': new JsfeatService
   },
   applyFilters (data, commandLineStr) {
-    jsfeatService.imageData = data
-
-    // data = jsfeatService.grayscale()
-
     const filtersSequence = this.parseCommandLineStr(commandLineStr)
     data = this.processData(data, filtersSequence)
 
@@ -30,9 +26,7 @@ const controller = {
       }
 
       const serviceTitle = service[1]
-
-      this.services[serviceTitle].imageData = data
-      data = this.services[serviceTitle].filters[filter]()
+      data = this.services[serviceTitle].filters[filter](data)
     })
 
     return data
