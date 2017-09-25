@@ -11,7 +11,6 @@ const JsfeatService = function () {
     return imageData
   }
 
-<<<<<<< HEAD
   const _convertImageDataToU8 = (imageData) => {
     const buf = new Array(imageData.data.length / 4)
     for (let i = 0, j = 0; i < imageData.data.length; i += 4, ++j) {
@@ -28,8 +27,6 @@ const JsfeatService = function () {
     return mat
   }
 
-=======
->>>>>>> 5e1bce88de125e7285cb5b89ed7dfdcab0ca6233
   const _grayscale = (imageData) => {
     let grayImg = new jsfeat.matrix_t(
       imageData.width,
@@ -61,11 +58,7 @@ const JsfeatService = function () {
     const kernelSize = (radius + 1) << 1
 
     jsfeat.imgproc.gaussian_blur(
-<<<<<<< HEAD
       _convertImageDataToU8(imageData),
-=======
-      imageData.data,
->>>>>>> 5e1bce88de125e7285cb5b89ed7dfdcab0ca6233
       bluredImg,
       kernelSize,
       sigma
@@ -74,7 +67,6 @@ const JsfeatService = function () {
     return _convertU8toImageData(imageData, bluredImg)
   }
 
-<<<<<<< HEAD
   const _sobelDerivatives = (imageData) => {
     let sobelImg = new jsfeat.matrix_t(
       imageData.width,
@@ -85,10 +77,6 @@ const JsfeatService = function () {
     jsfeat.imgproc.sobel_derivatives(_convertImageDataToU8(imageData), sobelImg)
 
     return _convertU8toImageData(imageData, sobelImg)
-=======
-  const _sobelDerivatives = () => {
-
->>>>>>> 5e1bce88de125e7285cb5b89ed7dfdcab0ca6233
   }
 
   const _canny = (imageData) => {
@@ -102,11 +90,7 @@ const JsfeatService = function () {
     const highThreshold = 50
 
     jsfeat.imgproc.canny(
-<<<<<<< HEAD
       _convertImageDataToU8(imageData),
-=======
-      imageData.data,
->>>>>>> 5e1bce88de125e7285cb5b89ed7dfdcab0ca6233
       cannyImg,
       lowThreshold,
       highThreshold
