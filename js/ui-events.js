@@ -3,9 +3,17 @@ $(document).ready(() => {
   const inputImage = $('#input-image')[0]
   const outputImage = $('#output-image')[0]
   const commandLine = $('#command-line-input')[0]
+  const filtersList = $('#filters-list')[0]
+  const filtersListItem = $(filtersList).find('a')
 
   const middleware = new Middleware()
   const controller = new Controller(middleware)
+
+  middleware.availableFilters.forEach(el => {
+    filtersListItem.clone().text(el[0]).appendTo(filtersList)
+  })
+  // remove a default item from the filters list
+  filtersListItem.eq(0).remove()
 
   $('#is-custom-filter-enabled').change((el) => {
     let isChecked = $(el.target).prop("checked")

@@ -109,10 +109,12 @@
                         >
                           Filters
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="filters-dropdown">
-                          <a class="dropdown-item" href="#">Sobel</a>
-                          <a class="dropdown-item" href="#">Canny</a>
-                          <a class="dropdown-item" href="#">Williams</a>
+                        <div
+                          id="filters-list"
+                          class="dropdown-menu"
+                          aria-labelledby="filters-dropdown"
+                        >
+                          <a class="dropdown-item" href="#">default</a>
                         </div>
                       </div>
                     </div>
@@ -165,7 +167,7 @@
                 class="form-control"
                 placeholder="List of filters..."
                 aria-label="List of filters..."
-                value="grayscale;gaussian_blur"
+                value=""
               >
               <span class="input-group-btn">
                 <button
