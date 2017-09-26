@@ -25,6 +25,15 @@ $(document).ready(() => {
     }
   })
 
+  $('.filters-list-item').click(el => {
+    if ($(commandLine).val().length > 0) {
+      $(commandLine).val($(commandLine).val() + ';' + $(el.target).text())
+
+      return false
+    }
+    $(commandLine).val($(el.target).text())
+  })
+
   $('#run-button').click(() => {
     const inputImageData = middleware.getImageDataFromImage(inputImage, canvas)
     const commandLineStr = $(commandLine).val()
