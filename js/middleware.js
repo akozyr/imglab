@@ -1,18 +1,24 @@
-const middleware = {
-  availableFilters: [],
-  init () {
-    this.getAvailableFilters()
-  },
-  getAvailableFilters () {
-    const jsfeatService = new JsfeatService()
-    const jsfeatFilters = jsfeatService.getFilters().map(el => {
-      return [el, 'jsfeat']
-    })
+class Middleware
+{
+  constructor () {
+    this.availableFilters = []
+    this.services = {
+      jsfeat: new JsfeatService()
+    }
 
-    this.availableFilters = this.availableFilters.concat(
-      jsfeatFilters
-    )
-  },
+    this.getAvailableFilters()
+  }
+
+  getAvailableFilters () {
+    for (let service in this.services) {
+      const serviceFilters = this.services[service]
+        .getServiceFilters()
+        .map(el => [el, service])
+
+      this.availableFilters = this.availableFilters.concat(serviceFilters)
+    }
+  }
+
   getImageDataFromImage (image, canvas) {
     let context2d = canvas.getContext('2d')
 
@@ -24,7 +30,8 @@ const middleware = {
     context2d.drawImage(image, 0, 0, width, height)
 
     return context2d.getImageData(0, 0, width, height)
-  },
+  }
+
   insertImageDataToImage (canvas, data, image) {
       let context2d = canvas.getContext('2d')
 

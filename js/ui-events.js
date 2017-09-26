@@ -4,7 +4,8 @@ $(document).ready(() => {
   const outputImage = $('#output-image')[0]
   const commandLine = $('#command-line-input')[0]
 
-  middleware.init()
+  const middleware = new Middleware()
+  const controller = new Controller(middleware)
 
   $('#is-custom-filter-enabled').change((el) => {
     let isChecked = $(el.target).prop("checked")
