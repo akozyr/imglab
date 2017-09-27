@@ -1,7 +1,7 @@
 class Controller
 {
-  constructor (middleware) {
-    this.middleware = middleware
+  constructor () {
+    this.preparer = new Preparer()
   }
 
   applyFilters (data, commandLineStr) {
@@ -22,7 +22,7 @@ class Controller
 
   _processData (data, filters) {
     filters.forEach(filter => {
-      const service = this.middleware.availableFilters.find(el => el[0] === filter)
+      const service = this.preparer.availableFilters.find(el => el[0] === filter)
 
       if (!service) {
         alert('"' + filter + '" can not be found.')
@@ -31,11 +31,11 @@ class Controller
       }
 
       const serviceTitle = service[1]
-      const serviceFunction = this.middleware
+      const serviceFunction = this.preparer
         .services[serviceTitle]
         .filter(filter)
 
-      data = this.middleware.services[serviceTitle][serviceFunction](data)
+      data = this.preparer.services[serviceTitle][serviceFunction](data)
     })
 
     return data

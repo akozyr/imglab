@@ -29,9 +29,10 @@ class JsfeatService extends AbstractService
     const radius = 2
     const sigma = 0
     const kernelSize = (radius + 1) << 1
+    const sourceMatrix = this._convertImageDataToU8(imageData)
 
     jsfeat.imgproc.gaussian_blur(
-      this._convertImageDataToU8(imageData),
+      sourceMatrix,
       bluredImg,
       kernelSize,
       sigma
@@ -47,7 +48,9 @@ class JsfeatService extends AbstractService
       jsfeat.U8_t | jsfeat.C1_t
     )
 
-    jsfeat.imgproc.sobel_derivatives(this._convertImageDataToU8(imageData), sobelImg)
+    const sourceMatrix = this._convertImageDataToU8(imageData)
+
+    jsfeat.imgproc.sobel_derivatives(sourceMatrix, sobelImg)
 
     return this._convertU8toImageData(imageData, sobelImg)
   }
@@ -61,9 +64,10 @@ class JsfeatService extends AbstractService
 
     const lowThreshold = 20
     const highThreshold = 50
+    const sourceMatrix = this._convertImageDataToU8(imageData)
 
     jsfeat.imgproc.canny(
-      this._convertImageDataToU8(imageData),
+      sourceMatrix,
       cannyImg,
       lowThreshold,
       highThreshold

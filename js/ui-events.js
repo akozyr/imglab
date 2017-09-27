@@ -6,10 +6,9 @@ $(document).ready(() => {
   const filtersList = $('#filters-list')[0]
   const filtersListItem = $(filtersList).find('a')
 
-  const middleware = new Middleware()
-  const controller = new Controller(middleware)
+  const controller = new Controller()
 
-  middleware.availableFilters.forEach(el => {
+  controller.preparer.availableFilters.forEach(el => {
     filtersListItem.clone().text(el[0]).appendTo(filtersList)
   })
   // remove a default item from the filters list
@@ -35,11 +34,11 @@ $(document).ready(() => {
   })
 
   $('#run-button').click(() => {
-    const inputImageData = middleware.getImageDataFromImage(inputImage, canvas)
+    const inputImageData = controller.preparer.getImageDataFromImage(inputImage, canvas)
     const commandLineStr = $(commandLine).val()
 
     const outputImageData = controller.applyFilters(inputImageData, commandLineStr)
 
-    middleware.insertImageDataToImage(canvas, outputImageData, outputImage)
+    controller.preparer.insertImageDataToImage(canvas, outputImageData, outputImage)
   })
 })

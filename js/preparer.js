@@ -1,4 +1,4 @@
-class Middleware
+class Preparer
 {
   constructor () {
     this.availableFilters = []
