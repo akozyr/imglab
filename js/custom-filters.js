@@ -33,6 +33,8 @@ class CustomFilters
 
     const PIXEL_NUMBER = imageData.width * imageData.height
 
+    // TODO: this logic can be refactored:
+    // three arrays (red, green, blue) can be merged into single array
     for (let i = 0; i < MAX_COLOR_VALUE; i++) {
       redFrequency = red[i] / PIXEL_NUMBER
       greenFrequency = green[i] / PIXEL_NUMBER
