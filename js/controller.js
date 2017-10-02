@@ -21,6 +21,10 @@ class Controller
   }
 
   _processData (data, filters) {
+    const customFilters = new CustomFilters()
+    const entropy = customFilters.getImageEntropy(data)
+    console.log(entropy)
+
     filters.forEach(filter => {
       const service = this.preparer.availableFilters.find(el => el[0] === filter)
 
