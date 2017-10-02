@@ -3,7 +3,8 @@ class Preparer
   constructor () {
     this.availableFilters = []
     this.services = {
-      jsfeat: new JsfeatService()
+      jsfeat: new JsfeatService(),
+      trackingjs: new TrackingjsService()
     }
 
     this.getAvailableFilters()

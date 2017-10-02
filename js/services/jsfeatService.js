@@ -41,20 +41,6 @@ class JsfeatService extends AbstractService
     return this._convertU8toImageData(imageData, bluredImg)
   }
 
-  sobelDerivativesFilter (imageData) {
-    let sobelImg = new jsfeat.matrix_t(
-      imageData.width,
-      imageData.height,
-      jsfeat.U8_t | jsfeat.C1_t
-    )
-
-    const sourceMatrix = this._convertImageDataToU8(imageData)
-
-    jsfeat.imgproc.sobel_derivatives(sourceMatrix, sobelImg)
-
-    return this._convertU8toImageData(imageData, sobelImg)
-  }
-
   cannyFilter (imageData) {
     let cannyImg = new jsfeat.matrix_t(
       imageData.width,
