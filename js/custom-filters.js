@@ -26,19 +26,20 @@ class CustomFilters
       blue[b]++
     }
 
-    let probability = new Array(MAX_COLOR_VALUE).fill(0)
+
+    let redFrequency, greenFrequency, blueFrequency
     let entropy = 0.0
-    let redProbability, greenProbability, blueProbability
+    let frequency = 0.0
 
     const PIXEL_NUMBER = imageData.width * imageData.height
 
     for (let i = 0; i < MAX_COLOR_VALUE; i++) {
-      redProbability = red[i] / PIXEL_NUMBER
-      greenProbability = green[i] / PIXEL_NUMBER
-      blueProbability = blue[i] / PIXEL_NUMBER
+      redFrequency = red[i] / PIXEL_NUMBER
+      greenFrequency = green[i] / PIXEL_NUMBER
+      blueFrequency = blue[i] / PIXEL_NUMBER
 
-      probability[i] = (redProbability + greenProbability + blueProbability) / 3
-      entropy += probability[i] * Math.logBase(probability[i], 2)
+      frequency = (redFrequency + greenFrequency + blueFrequency) / 3
+      entropy += frequency * Math.logBase(frequency, 2)
     }
 
     return -entropy
