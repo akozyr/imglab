@@ -21,9 +21,6 @@ class Controller
   }
 
   _processData (data, filters) {
-    const highchartsService = new HighchartsService()
-    highchartsService.drawHistogram('histogram')
-
     filters.forEach(filter => {
       const service = this.preparer.availableFilters.find(el => el[0] === filter)
 

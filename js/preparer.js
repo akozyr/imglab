@@ -8,6 +8,15 @@ class Preparer
     }
 
     this.getAvailableFilters()
+
+    const highchartsService = new HighchartsService()
+    let histogramData = []
+
+    for (let i = 0; i < 256; i++) {
+      histogramData.push(Math.random())
+    }
+
+    highchartsService.drawHistogram('input-image-histogram', histogramData)
   }
 
   getAvailableFilters () {
