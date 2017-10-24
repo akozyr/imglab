@@ -1,31 +1,43 @@
 class HighchartsService
 {
-  drawHistogram (id, ) {
+  drawHistogram (id) {
     const HISTOGRAM_TITLE = 'US and USSR nuclear stockpiles'
     const Y_AXIS_TITLE = 'Nuclear weapon states'
     const AREA_START_POINT = 1940
-
-    const X_AXIS_LABEL_FORMATTER = () => {
-      return this.value
-    }
-
-    const Y_AXIS_LABEL_FORMATTER = () => {
-      return this.value / 1000 + 'k';
-    }
 
     Highcharts.chart(id, {
         chart: { type: 'area' },
         title: { text: HISTOGRAM_TITLE },
         xAxis: {
             allowDecimals: false,
-            labels: { formatter: X_AXIS_LABEL_FORMATTER }
+            labels: {
+                formatter () {
+                    return this.value
+                }
+            }
         },
         yAxis: {
             title: { text: Y_AXIS_TITLE },
-            labels: { formatter: Y_AXIS_LABEL_FORMATTER }
+            labels: {
+                formatter () {
+                    return this.value / 1000 + 'k';
+                }
+            }
         },
         plotOptions: {
-            area: { pointStart: AREA_START_POINT }
+            area: {
+                pointStart: AREA_START_POINT,
+                marker: {
+                    enabled: false,
+                    symbol: 'circle',
+                    radius: 2,
+                    states: {
+                        hover: {
+                            enabled: true
+                        }
+                    }
+                }
+            }
         },
         series: [{
             name: 'USA',
