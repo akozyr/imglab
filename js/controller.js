@@ -6,6 +6,10 @@ class Controller
 
   applyFilters (data, commandLineStr) {
     const filtersSequence = this._parseCommandLineStr(commandLineStr)
+
+    const imageProperties = new ImageProperties()
+    console.log(imageProperties.getImageEntropy(data))
+
     data = this._processData(data, filtersSequence)
 
     return data
