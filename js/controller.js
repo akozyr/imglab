@@ -8,12 +8,12 @@ class Controller
     const filtersSequence = this._parseCommandLineStr(commandLineStr)
 
     const imageProperties = new ImageProperties()
-    const [redFrequency, greenFrequency, blueFrequency] = imageProperties.getImageHistogramData(data)
+    const [red, green, blue] = imageProperties.getColorImageHistogramData(data)
 
     alert(imageProperties.getImageEntropy(data))
 
     const highchartsService = new HighchartsService()
-    highchartsService.drawHistogram('input-image-histogram', greenFrequency)
+    highchartsService.drawHistogram('input-image-histogram', imageProperties.getNormalizedArray(blue))
 
     data = this._processData(data, filtersSequence)
 
