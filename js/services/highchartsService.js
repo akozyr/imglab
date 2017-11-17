@@ -11,6 +11,10 @@ class HighchartsService
 
     Highcharts.chart(outputElementId, {
       chart: { type: 'area' },
+      // '#058DC7' - blue
+      // '#64E572' - green
+      // '#ED561B' - red
+      colors: ['#ED561B'],
       title: { text: HISTOGRAM_TITLE },
       xAxis: {
         allowDecimals: false,
