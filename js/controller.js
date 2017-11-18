@@ -13,7 +13,11 @@ class Controller
     alert(imageProperties.getImageEntropy(data))
 
     const highchartsService = new HighchartsService()
-    highchartsService.drawHistogram('input-image-histogram', imageProperties.getNormalizedArray(green))
+    highchartsService.drawHistogram(
+      'input-image-histogram',
+      imageProperties.getNormalizedArray(green),
+      'green'
+    )
 
     data = this._processData(data, filtersSequence)
 
