@@ -130,6 +130,18 @@
                         Set a custom filter matrix
                       </span>
                     </label>
+                    <label class="custom-control custom-checkbox float-right">
+                      <input
+                        id="is-color-histogram-enabled"
+                        type="checkbox"
+                        class="custom-control-input"
+                        value="1"
+                      >
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">
+                        Show histograms for three channels
+                      </span>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -240,9 +252,21 @@
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nam viverra euismod odio, gravida pellentesque urna varius vitae
 
-                  <div id="input-image-histogram-r" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                  <div id="input-image-histogram-g" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
-                  <div id="input-image-histogram-b" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+                  <div
+                    id="input-image-histogram-r"
+                    class="color-histograms"
+                    style="min-width: 310px; height: 400px; margin: 0 auto; display: none"
+                  ></div>
+                  <div
+                    id="input-image-histogram-g"
+                    class="color-histograms"
+                    style="min-width: 310px; height: 400px; margin: 0 auto; display: none"
+                  ></div>
+                  <div
+                    id="input-image-histogram-b"
+                    class="color-histograms"
+                    style="min-width: 310px; height: 400px; margin: 0 auto; display: none"
+                  ></div>
                 </p>
               </div>
             </div>

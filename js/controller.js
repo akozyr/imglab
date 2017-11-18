@@ -6,6 +6,17 @@ class Controller
 
   applyFilters (data, commandLineStr) {
     const filtersSequence = this._parseCommandLineStr(commandLineStr)
+    data = this._processData(data, filtersSequence)
+
+    return data
+  }
+
+  showInputImageProperties (data, inputImagePropertiesConfig) {
+    // TODO: refactor for multiply image properties
+    // it will be some loop for check the whole `imageProperties` object
+    if (!inputImagePropertiesConfig.color_histogram) {
+      return
+    }
 
     const imageProperties = new ImageProperties()
     const [red, green, blue] = imageProperties.getColorImageHistogramData(data)
@@ -28,10 +39,6 @@ class Controller
       imageProperties.getNormalizedArray(blue),
       'blue'
     )
-
-    data = this._processData(data, filtersSequence)
-
-    return data
   }
 
   _parseCommandLineStr (str) {

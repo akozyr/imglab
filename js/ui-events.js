@@ -8,6 +8,8 @@ $(document).ready(() => {
 
   const controller = new Controller()
 
+  let showColorHistogram = false
+
   controller.preparer.availableFilters.forEach(el => {
     filtersListItem.clone().text(el[0]).appendTo(filtersList)
   })
@@ -19,9 +21,21 @@ $(document).ready(() => {
 
     if (isChecked) {
       $('#custom-filter-matrix-card').fadeIn('slow')
-    } else {
-      $('#custom-filter-matrix-card').hide()
+      return
     }
+
+    $('#custom-filter-matrix-card').hide()
+  })
+
+  $('#is-color-histogram-enabled').change(el => {
+    showColorHistogram = $(el.target).prop("checked")
+
+    if (showColorHistogram) {
+      $('.color-histograms').show()
+      return
+    }
+
+    $('.color-histograms').hide()
   })
 
   $('.filters-list-item').click(el => {
@@ -35,6 +49,13 @@ $(document).ready(() => {
 
   $('#run-button').click(() => {
     const inputImageData = controller.preparer.getImageDataFromImage(inputImage, canvas)
+
+    const inputImagePropertiesConfig = {
+      color_histogram: showColorHistogram
+    }
+
+    controller.showInputImageProperties(inputImageData, inputImagePropertiesConfig)
+
     const commandLineStr = $(commandLine).val()
 
     const outputImageData = controller.applyFilters(inputImageData, commandLineStr)
