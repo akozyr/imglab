@@ -130,6 +130,18 @@
                         Set a custom filter matrix
                       </span>
                     </label>
+                    <label class="custom-control custom-checkbox float-right">
+                      <input
+                        id="is-color-histogram-enabled"
+                        type="checkbox"
+                        class="custom-control-input"
+                        value="1"
+                      >
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">
+                        Show histograms for three channels
+                      </span>
+                    </label>
                   </div>
                 </div>
               </div>
@@ -189,7 +201,7 @@
             <a href="#">
               <img
                 id="input-image"
-                src="img/flower.bmp"
+                src="img/lena.bmp"
                 alt=""
               >
             </a>
@@ -239,6 +251,22 @@
                 <p class="card-text">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                   Nam viverra euismod odio, gravida pellentesque urna varius vitae
+
+                  <div
+                    id="input-image-histogram-r"
+                    class="color-histograms"
+                    style="min-width: 310px; height: 400px; margin: 0 auto; display: none"
+                  ></div>
+                  <div
+                    id="input-image-histogram-g"
+                    class="color-histograms"
+                    style="min-width: 310px; height: 400px; margin: 0 auto; display: none"
+                  ></div>
+                  <div
+                    id="input-image-histogram-b"
+                    class="color-histograms"
+                    style="min-width: 310px; height: 400px; margin: 0 auto; display: none"
+                  ></div>
                 </p>
               </div>
             </div>
@@ -284,14 +312,17 @@
 
   <script src="js/vendors/jsfeat/build/jsfeat-min.js"></script>
   <script src="js/vendors/trackingjs/build/tracking-min.js"></script>
+  <script src="js/vendors/highcharts/code/highcharts.js"></script>
+  <script src="js/vendors/highcharts/code/modules/exporting.js"></script>
 
   <!-- custom scripts -->
   <script src="js/ui-events.js"></script>
-  <script src="js/custom-filters.js"></script>
-  <script src="js/services/abstractService.js"></script>
-  <script src="js/services/jsfeatService.js"></script>
-  <script src="js/services/trackingjsService.js"></script>
-  <script src="js/preparer.js"></script>
-  <script src="js/controller.js"></script>
+  <script src="js/services/AbstractImageProcessingService.js"></script>
+  <script src="js/services/JsfeatService.js"></script>
+  <script src="js/services/TrackingjsService.js"></script>
+  <script src="js/services/HighchartsService.js"></script>
+  <script src="js/helpers/ImageProperties.js"></script>
+  <script src="js/helpers/Preparer.js"></script>
+  <script src="js/Controller.js"></script>
 </body>
 </html>

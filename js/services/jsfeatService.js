@@ -1,4 +1,4 @@
-class JsfeatService extends AbstractService
+class JsfeatService extends AbstractImageProcessingService
 {
   grayscaleFilter (imageData) {
     let grayImg = new jsfeat.matrix_t(

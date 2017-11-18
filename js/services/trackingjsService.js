@@ -1,4 +1,4 @@
-class TrackingjsService extends AbstractService
+class TrackingjsService extends AbstractImageProcessingService
 {
   sobelFilter (imageData) {
     const result = tracking.Image.sobel(

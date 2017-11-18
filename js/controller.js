@@ -11,6 +11,36 @@ class Controller
     return data
   }
 
+  showInputImageProperties (data, inputImagePropertiesConfig) {
+    // TODO: refactor for multiply image properties
+    // it will be some loop for check the whole `imageProperties` object
+    if (!inputImagePropertiesConfig.color_histogram) {
+      return
+    }
+
+    const imageProperties = new ImageProperties()
+    const [red, green, blue] = imageProperties.getColorImageHistogramData(data)
+
+    const highchartsService = new HighchartsService()
+    highchartsService.drawHistogram(
+      'input-image-histogram-r',
+      imageProperties.getNormalizedArray(red),
+      'red'
+    )
+
+    highchartsService.drawHistogram(
+      'input-image-histogram-g',
+      imageProperties.getNormalizedArray(green),
+      'green'
+    )
+
+    highchartsService.drawHistogram(
+      'input-image-histogram-b',
+      imageProperties.getNormalizedArray(blue),
+      'blue'
+    )
+  }
+
   _parseCommandLineStr (str) {
     const DELIMITER = ';'
 
@@ -21,10 +51,6 @@ class Controller
   }
 
   _processData (data, filters) {
-    const customFilters = new CustomFilters()
-    const entropy = customFilters.getImageEntropy(data)
-    console.log(entropy)
-
     filters.forEach(filter => {
       const service = this.preparer.availableFilters.find(el => el[0] === filter)
 

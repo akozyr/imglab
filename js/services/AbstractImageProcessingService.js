@@ -1,4 +1,4 @@
-class AbstractService
+class AbstractImageProcessingService
 {
   constructor () {
     this.METHOD_SUFFIX = 'Filter'
