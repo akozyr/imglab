@@ -10,13 +10,23 @@ class Controller
     const imageProperties = new ImageProperties()
     const [red, green, blue] = imageProperties.getColorImageHistogramData(data)
 
-    alert(imageProperties.getImageEntropy(data))
-
     const highchartsService = new HighchartsService()
     highchartsService.drawHistogram(
-      'input-image-histogram',
+      'input-image-histogram-r',
+      imageProperties.getNormalizedArray(red),
+      'red'
+    )
+
+    highchartsService.drawHistogram(
+      'input-image-histogram-g',
       imageProperties.getNormalizedArray(green),
       'green'
+    )
+
+    highchartsService.drawHistogram(
+      'input-image-histogram-b',
+      imageProperties.getNormalizedArray(blue),
+      'blue'
     )
 
     data = this._processData(data, filtersSequence)
