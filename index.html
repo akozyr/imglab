@@ -92,10 +92,12 @@
                         >
                           Test Images
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="images-dropdown">
-                          <a class="dropdown-item" href="#">1</a>
-                          <a class="dropdown-item" href="#">2</a>
-                          <a class="dropdown-item" href="#">3</a>
+                        <div
+                          id="images-list"
+                          class="dropdown-menu"
+                          aria-labelledby="images-dropdown"
+                        >
+                          <a class="dropdown-item images-list-item" href="#"></a>
                         </div>
                       </div>
                       <div class="dropdown">
@@ -201,7 +203,7 @@
             <a href="#">
               <img
                 id="input-image"
-                src="img/lena.bmp"
+                src="img/cameraman.bmp"
                 alt=""
               >
             </a>
@@ -249,9 +251,24 @@
                   <a href="#">Input Image Properties</a>
                 </h4>
                 <p class="card-text">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                  Nam viverra euismod odio, gravida pellentesque urna varius vitae
-
+                  <div class="single-image-properties">
+                    <p id="img-props-filename">
+                      <span class="title">Filename:</span>
+                      <span class="value"></span>
+                    </p>
+                    <p id="img-props-size">
+                      <span class="title">Size:</span>
+                      <span class="value"></span>
+                    </p>
+                    <p id="img-props-pixels-number">
+                      <span class="title">Pixels number:</span>
+                      <span class="value"></span>
+                    </p>
+                    <p id="img-props-entropy">
+                      <span class="title">Average entropy:</span>
+                      <span class="value"></span>
+                    </p>
+                  </div>
                   <div
                     id="input-image-histogram-r"
                     class="color-histograms"

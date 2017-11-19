@@ -39,6 +39,10 @@ class Controller
       imageProperties.getNormalizedArray(blue),
       'blue'
     )
+
+    return {
+      entropy: imageProperties.getImageEntropy(data)
+    }
   }
 
   _parseCommandLineStr (str) {
