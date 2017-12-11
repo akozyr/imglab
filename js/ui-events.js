@@ -82,7 +82,9 @@ $(document).ready(() => {
     }
     const imageProps = controller.showInputImageProperties(inputImageData, inputImagePropertiesConfig)
 
-    $('#img-props-entropy > .value').text(imageProps.entropy)
+    if (imageProps) {
+      $('#img-props-entropy > .value').text(imageProps.entropy)
+    }
 
     const commandLineStr = $(commandLine).val()
     const outputImageData = controller.applyFilters(inputImageData, commandLineStr)
