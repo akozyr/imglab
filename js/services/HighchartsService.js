@@ -69,4 +69,29 @@ class HighchartsService
       ]
     })
   }
+
+  drawDiagram (outputElementId, series) {
+    Highcharts.chart(outputElementId, {
+        chart: { type: 'column' },
+        title: { text: 'Relative entropy diagram' },
+        xAxis: { type: 'category' },
+        yAxis: {
+            title: { text: 'Relative entropy value' }
+        },
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.y:.1f}%'
+                }
+            }
+        },
+        tooltip: {
+            headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+            pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}%</b><br/>'
+        },
+        series: series
+    });
+  }
 }

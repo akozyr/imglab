@@ -341,5 +341,51 @@
   <script src="js/helpers/ImageProperties.js"></script>
   <script src="js/helpers/Preparer.js"></script>
   <script src="js/Controller.js"></script>
+
+  <div id="entropy-diagram" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+  <script>
+    const highchartsService = new HighchartsService()
+    const outputElementId = 'entropy-diagram'
+    const series = [
+      {
+        name: 'Sobel',
+        colorByPoint: true,
+        data: [
+          {
+            name: 'Sobel1',
+            y: 0.75
+          },
+          {
+            name: 'Sobel2',
+            y: 0.68
+          }
+        ]
+      },
+      {
+        name: 'Canny',
+        colorByPoint: true,
+        data: [
+          {
+            name: 'Canny1',
+            y: 0.9
+          },
+          {
+            name: 'Canny2',
+            y: 0.5
+          },
+          {
+            name: 'Canny3',
+            y: 0.12
+          },
+          {
+            name: 'Canny4',
+            y: 0.3
+          }
+        ]
+      }
+    ]
+
+    highchartsService.drawDiagram(outputElementId, series)
+  </script>
 </body>
 </html>
