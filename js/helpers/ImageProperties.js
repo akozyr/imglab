@@ -30,7 +30,7 @@ class ImageProperties
   // 5.211709716960968 - for flower.bmp
   // 7.009716283345514 - for cameraman.bmp
 
-  getImageEntropy (imageData) {
+  getImageRelativeEntropy (imageData) {
     Math.logBase = (number, base) => {
       if (number > 0) {
         return Math.log(number) / Math.log(base)
@@ -40,6 +40,16 @@ class ImageProperties
     }
 
     const [red, green, blue] = this.getColorImageHistogramData(imageData)
+
+    // TODO: max and min should be got from all chanels, but not the one
+    const minHistogramValue = red.findIndex(el => el > 0)
+    let maxHistogramValue = 0
+    for (let i = red.length; i-- > 0;) {
+      if (red[i] > 0) {
+        maxHistogramValue = i
+        break
+      }
+    }
 
     const PIXEL_NUMBER = imageData.width * imageData.height
     let entropy = 0.0
@@ -56,6 +66,10 @@ class ImageProperties
       entropy += frequency * Math.logBase(frequency, 2)
     }
 
-    return -entropy
+    // return -entropy
+
+    const result = 1 + entropy / Math.logBase(maxHistogramValue - minHistogramValue + 1, 2)
+
+    return result
   }
 }

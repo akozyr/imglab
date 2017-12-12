@@ -41,7 +41,7 @@ class Controller
     )
 
     return {
-      entropy: imageProperties.getImageEntropy(data)
+      entropy: imageProperties.getImageRelativeEntropy(data)
     }
   }
 
